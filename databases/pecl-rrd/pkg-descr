@@ -1,0 +1,4 @@
+Procedural and simple OO wrapper for rrdtool - data logging and graphing system
+for time series data.
+
+WWW: https://pecl.php.net/package/rrd

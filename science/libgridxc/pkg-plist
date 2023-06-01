@@ -1,0 +1,16 @@
+include/gridxc/debugxc.mod
+include/gridxc/gridxc.mod
+include/gridxc/gridxc_config.mod
+include/gridxc/gridxc_fft_gpfa.mod
+include/gridxc/m_atomxc.mod
+include/gridxc/m_cellxc.mod
+include/gridxc/m_ggaxc.mod
+include/gridxc/m_ldaxc.mod
+include/gridxc/mesh3d.mod
+include/gridxc/xcmod.mod
+lib/libgridxc.a
+lib/libgridxc.so
+lib/libgridxc.so.0
+lib/libgridxc.so.0.0.0
+libdata/pkgconfig/libgridxc.pc
+share/org.siesta-project/gridxc.mk

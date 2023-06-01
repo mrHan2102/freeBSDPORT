@@ -1,0 +1,4 @@
+django-model-utils provides Django model mixins and utilities and supports
+Django 1.8 to 2.0.
+
+WWW: https://github.com/jazzband/django-model-utils

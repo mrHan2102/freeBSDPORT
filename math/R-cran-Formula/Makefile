@@ -1,0 +1,15 @@
+# Created by: TAKATSU Tomonari <tota@FreeBSD.org>
+
+PORTNAME=	Formula
+DISTVERSION=	1.2-4
+CATEGORIES=	math
+DISTNAME=	${PORTNAME}_${DISTVERSION}
+
+MAINTAINER=	tota@FreeBSD.org
+COMMENT=	Extended Model Formulas
+
+LICENSE=	GPLv2+
+
+USES=	cran:auto-plist
+
+.include <bsd.port.mk>

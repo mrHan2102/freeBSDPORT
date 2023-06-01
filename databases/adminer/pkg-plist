@@ -1,0 +1,4 @@
+@owner %%WWWOWN%%
+@group %%WWWGRP%%
+@mode 0644
+%%WWWDIR%%/index.php

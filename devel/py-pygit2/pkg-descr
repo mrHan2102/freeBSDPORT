@@ -1,0 +1,4 @@
+Pygit2 is a set of Python bindings to the libgit2 shared library,
+libgit2 implements the core of Git.
+
+WWW: https://www.pygit2.org

@@ -1,0 +1,5 @@
+sbin/pipsecd
+etc/ipsec/pipsecd.conf.sample
+%%PORTDOCS%%share/doc/pipsecd/README
+%%PORTDOCS%%share/doc/pipsecd/COPYRIGHT
+%%PORTDOCS%%share/doc/pipsecd/README.port

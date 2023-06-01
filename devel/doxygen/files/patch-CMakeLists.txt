@@ -1,0 +1,10 @@
+--- CMakeLists.txt.orig	2020-12-21 14:08:57 UTC
++++ CMakeLists.txt
+@@ -169,7 +169,6 @@ endif()
+ include(cmake/CompilerWarnings.cmake)
+ include(cmake/Coverage.cmake)
+ 
+-add_subdirectory(libmd5)
+ add_subdirectory(liblodepng)
+ add_subdirectory(libmscgen)
+ add_subdirectory(libversion)

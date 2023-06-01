@@ -1,0 +1,21 @@
+Make tests conditional
+
+--- CMakeLists.txt.orig	2021-01-21 22:50:19 UTC
++++ CMakeLists.txt
+@@ -37,7 +37,7 @@ include(FeatureSummary)
+ # check for PkgConfig, Qt and MPIR/GMP
+ find_package(PkgConfig)
+ if(BUILD_QT4)
+-    find_package(Qt4 REQUIRED COMPONENTS QtCore QtGui QtDBus QtTest QtWebKit QtDeclarative)
++    find_package(Qt4 REQUIRED COMPONENTS QtCore QtGui QtDBus QtWebKit QtDeclarative)
+     set(QT_USE_LIBSPREFIX Qt4::Qt)
+     set(ALKIMIA_LIB_SUFFIX "")
+     set(ALKIMIA_INCLUDE_SUFFIX "Qt4")
+@@ -107,7 +107,6 @@ else()
+ 
+     find_package(Qt5 REQUIRED COMPONENTS
+         Core
+-        Test
+         ${QT_BROWSER_COMPONENT}
+         Qml
+     )

@@ -1,0 +1,11 @@
+qDecoder is a simple and powerful CGI library for C/C++ programming language.
+
+Features:
+- Supports parsing a request encoded by GET/POST method
+- Supports parsing multipart/form-data encoding. (in-memory and direct disk)
+- Supports COOKIE handling.
+- Supports Session management.
+- Supports FastCGI
+
+WWW: http://wolkykim.github.io/qdecoder/
+WWW: https://github.com/wolkykim/qdecoder

@@ -1,0 +1,24 @@
+# Created by: Yi-Jheng Lin <yzlin@cs.nctu.edu.tw>
+
+PORTNAME=	iniparse
+PORTVERSION=	0.5
+CATEGORIES=	devel python
+MASTER_SITES=	CHEESESHOP
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+
+MAINTAINER=	sunpoet@FreeBSD.org
+COMMENT=	Accessing and Modifying INI files
+
+LICENSE=	MIT PSFL
+LICENSE_COMB=	dual
+LICENSE_FILE_MIT=	${WRKSRC}/LICENSE
+LICENSE_FILE_PSFL=	${WRKSRC}/LICENSE-PSF
+
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>=0:devel/py-six@${PY_FLAVOR}
+
+USES=		python:3.6+
+USE_PYTHON=	autoplist concurrent distutils
+
+NO_ARCH=	yes
+
+.include <bsd.port.mk>

@@ -1,0 +1,5 @@
+TIMESTAMP = 1580450115
+SHA256 (libappindicator_12.10.1+18.04.20180322.1.orig.tar.gz) = 59cde4b05ba166b1ab0166b69dcfbb90292aaa6e72d7a1498bde407cfada1be1
+SIZE (libappindicator_12.10.1+18.04.20180322.1.orig.tar.gz) = 71219
+SHA256 (libappindicator_12.10.1+18.04.20180322.1-0ubuntu5.diff.gz) = 4cb41fbdecbc940d5a2ba45794a596e16be12f9718a4bfb32801f98be61ad969
+SIZE (libappindicator_12.10.1+18.04.20180322.1-0ubuntu5.diff.gz) = 20583

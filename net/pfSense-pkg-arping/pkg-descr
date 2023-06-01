@@ -1,0 +1,3 @@
+Broadcasts a who-has ARP packet on the network and prints answers.
+
+WWW: https://docs.netgate.com/pfsense/en/latest/packages/arping.html

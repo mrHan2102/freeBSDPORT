@@ -1,0 +1,19 @@
+# Created by: Yuri Victorovich <yuri@rawbw.com>
+
+PORTNAME=	bitcoin
+PORTVERSION=	1.1.42
+CATEGORIES=	finance python
+MASTER_SITES=	CHEESESHOP
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+
+MAINTAINER=	yuri@FreeBSD.org
+COMMENT=	Python Bitcoin Tools
+
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+USES=		python:3.6+
+USE_PYTHON=	autoplist distutils
+NO_ARCH=	yes
+
+.include <bsd.port.mk>

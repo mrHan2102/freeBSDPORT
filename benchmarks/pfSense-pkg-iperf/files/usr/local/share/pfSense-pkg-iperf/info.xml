@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<pfsensepkgs>
+	<package>
+		<name>iperf</name>
+		<website>http://www.freshports.org/benchmarks/iperf/</website>
+		<descr><![CDATA[Iperf is a tool for testing network throughput, loss, and jitter.]]></descr>
+		<version>%%PKGVERSION%%</version>
+		<pkginfolink>https://docs.netgate.com/pfsense/en/latest/packages/iperf.html</pkginfolink>
+		<configurationfile>iperf.xml</configurationfile>
+	</package>
+</pfsensepkgs>

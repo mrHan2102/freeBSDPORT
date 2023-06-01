@@ -1,0 +1,15 @@
+--- CMakeLists.txt.orig	2021-07-21 06:15:34 UTC
++++ CMakeLists.txt
+@@ -233,6 +233,12 @@ if(ENABLE_CURL)
+     endif()
+ endif()
+ 
++find_package(Threads)
++set(gmic_qt_LIBRARIES
++    ${gmic_qt_LIBRARIES}
++    Threads::Threads
++)
++
+ add_definitions(-Dgmic_build)
+ add_definitions(-Dcimg_use_abort)
+ add_definitions(-Dgmic_is_parallel)

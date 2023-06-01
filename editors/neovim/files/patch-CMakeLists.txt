@@ -1,0 +1,14 @@
+--- CMakeLists.txt.orig	2021-07-02 16:36:49 UTC
++++ CMakeLists.txt
+@@ -517,9 +517,9 @@ endforeach()
+ 
+ # Find Lua interpreter
+ include(LuaHelpers)
+-set(LUA_DEPENDENCIES lpeg mpack bit)
++set(LUA_DEPENDENCIES lpeg bit)
+ if(NOT LUA_PRG)
+-  foreach(CURRENT_LUA_PRG luajit lua5.1 lua5.2 lua)
++  foreach(CURRENT_LUA_PRG luajit)
+     unset(_CHECK_LUA_PRG CACHE)
+     unset(LUA_PRG_WORKS)
+     find_program(_CHECK_LUA_PRG ${CURRENT_LUA_PRG})

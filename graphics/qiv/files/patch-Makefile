@@ -1,0 +1,13 @@
+--- Makefile.orig	2017-11-03 18:27:27 UTC
++++ Makefile
+@@ -57,8 +57,8 @@ endif
+ PKG_CONFIG ?= pkg-config
+ #CFLAGS    = -O0 -g -Wall
+ CFLAGS    = -O2 -Wall \
+-	    -fcaller-saves -ffast-math -fno-strength-reduce \
+-	    -fthread-jumps #-march=pentium #-DSTAT_MACROS_BROKEN
++	    -ffast-math -fno-strength-reduce \
++	    #-march=pentium #-DSTAT_MACROS_BROKEN
+ #CFLAGS    = -O2 -Wall -fomit-frame-pointer -finline-functions \
+ #	    -fcaller-saves -ffast-math -fno-strength-reduce \
+ #	    -fthread-jumps #-march=pentium #-DSTAT_MACROS_BROKEN

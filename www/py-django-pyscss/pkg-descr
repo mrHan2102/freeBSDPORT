@@ -1,0 +1,4 @@
+django-pyscss provides a collection of tools for making it easier to use pyScss
+within Django.
+
+WWW: https://github.com/fusionbox/django-pyscss

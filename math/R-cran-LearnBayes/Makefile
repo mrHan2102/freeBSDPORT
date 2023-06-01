@@ -1,0 +1,16 @@
+# Created by: TAKATSU Tomonari <tota@FreeBSD.org>
+
+PORTNAME=	LearnBayes
+PORTVERSION=	2.15.1
+PORTREVISION=	3
+CATEGORIES=	math education
+DISTNAME=	${PORTNAME}_${PORTVERSION}
+
+MAINTAINER=	tota@FreeBSD.org
+COMMENT=	Functions for Learning Bayesian Inference
+
+LICENSE=	GPLv2+
+
+USES=	cran:auto-plist
+
+.include <bsd.port.mk>

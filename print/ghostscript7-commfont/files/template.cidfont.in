@@ -1,0 +1,9 @@
+%!PS-Adobe-3.0 Resource-CIDFont
+%%BeginResource: CIDFont (%%FONTNAME%%)
+
+(%%FONTNAME%%)
+(%%GENERICFONTNAME_SUBST%%) /CIDFont findresource
+/CIDFont defineresource pop
+
+%%EndResource
+%%EOF

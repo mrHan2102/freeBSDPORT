@@ -1,0 +1,24 @@
+PORTNAME=	dpkt
+PORTVERSION=	1.9.6
+CATEGORIES=	net python
+MASTER_SITES=	CHEESESHOP
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+
+MAINTAINER=	sbz@FreeBSD.org
+COMMENT=	Python fast, simple packet creation / parsing module
+
+LICENSE=	BSD3CLAUSE
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+USES=		python:3.6+
+USE_PYTHON=	autoplist concurrent distutils pythonprefix
+
+OPTIONS_DEFINE=	DOCS
+
+PORTDOCS=	AUTHORS CHANGES PKG-INFO README.rst
+
+post-install:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
+
+.include <bsd.port.mk>

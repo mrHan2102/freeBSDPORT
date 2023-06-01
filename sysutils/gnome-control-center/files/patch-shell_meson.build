@@ -1,0 +1,14 @@
+# find heimal from base, make configurable ?
+
+--- shell/meson.build.orig	2020-09-27 18:22:48 UTC
++++ shell/meson.build
+@@ -130,7 +130,8 @@ executable(
+          dependencies : shell_deps,
+                c_args : cflags,
+             link_with : panels_libs,
+-              install : true
++              install : true,
++              install_rpath : '/usr/lib'
+ )
+ 
+ 

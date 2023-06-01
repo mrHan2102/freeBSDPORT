@@ -1,0 +1,26 @@
+# Created by: Ryan T. Dean <rtdean@cytherianage.net>
+
+PORTNAME=	Unicode-MapUTF8
+PORTVERSION=	1.14
+CATEGORIES=	converters perl5
+MASTER_SITES=	CPAN
+PKGNAMEPREFIX=	p5-
+
+MAINTAINER=	perl@FreeBSD.org
+COMMENT=	Perl class that implements conversion between arbitrary charsets
+
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+BUILD_DEPENDS=	${RUN_DEPENDS}
+RUN_DEPENDS=	ja-p5-Jcode>=0:japanese/p5-Jcode \
+		p5-Unicode-Map>=0:converters/p5-Unicode-Map \
+		p5-Unicode-Map8>=0:converters/p5-Unicode-Map8 \
+		p5-Unicode-String>=0:converters/p5-Unicode-String
+
+USES=		perl5
+USE_PERL5=	configure
+
+NO_ARCH=	yes
+
+.include <bsd.port.mk>

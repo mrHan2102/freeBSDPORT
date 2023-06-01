@@ -1,0 +1,30 @@
+PORTNAME=	tailscale
+PORTVERSION=	1.36.0
+DISTVERSIONPREFIX=	v
+CATEGORIES=	security net-vpn
+
+MAINTAINER=	ashish@FreeBSD.org
+COMMENT=	Mesh VPN that makes it easy to connect your devices
+WWW=		https://tailscale.com/
+
+LICENSE=	BSD3CLAUSE
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+RUN_DEPENDS=	ca_root_nss>0:security/ca_root_nss
+
+USES=		go:modules
+
+GO_MODULE=	github.com/tailscale/tailscale
+
+USE_RC_SUBR=	tailscaled
+
+GO_TARGET=	./cmd/tailscale \
+		./cmd/tailscaled
+GO_BUILDFLAGS=	-tags xversion -ldflags "\
+		-X tailscale.com/version.Long=${PORTVERSION} \
+		-X tailscale.com/version.Short=${PORTVERSION}"
+
+PLIST_FILES=	bin/tailscale  \
+		bin/tailscaled
+
+.include <bsd.port.mk>

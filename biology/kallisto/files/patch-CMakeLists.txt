@@ -1,0 +1,11 @@
+--- CMakeLists.txt.orig	2020-07-22 22:36:50 UTC
++++ CMakeLists.txt
+@@ -42,7 +42,7 @@ ExternalProject_Add(htslib
+     BUILD_IN_SOURCE 1
+     CONFIGURE_COMMAND autoheader && autoconf && ${PROJECT_SOURCE_DIR}/ext/htslib/configure 
+         --prefix=${PREFIX} --disable-bz2 --disable-lzma --disable-libcurl
+-    BUILD_COMMAND make lib-static
++    BUILD_COMMAND gmake lib-static
+     INSTALL_COMMAND ""
+ )
+ 

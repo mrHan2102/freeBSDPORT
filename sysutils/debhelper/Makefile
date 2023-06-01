@@ -1,0 +1,29 @@
+# Created by: Gea-Suan Lin <gslin@gslin.org>
+
+PORTNAME=	debhelper
+PORTVERSION=	13.5.2
+CATEGORIES=	sysutils
+MASTER_SITES=	DEBIAN
+DISTNAME=	${PORTNAME}_${PORTVERSION}
+
+MAINTAINER=	sunpoet@FreeBSD.org
+COMMENT=	Helper programs for debian/rules
+
+LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/GPL
+
+USES=		gmake perl5 shebangfix tar:xz
+
+MAKE_ARGS=	PREFIX=${PREFIX} SITE_PERL=${PREFIX}/${SITE_PERL_REL} VERSION=${PORTVERSION}
+NO_ARCH=	yes
+NO_BUILD=	yes
+WRKSRC=		${WRKDIR}/${PORTNAME}
+
+PORTSCOUT=	limit:^[0-9\.]*$$
+
+SHEBANG_FILES=	dh*
+
+post-patch:
+	@${RM} ${WRKSRC}/*.orig
+
+.include <bsd.port.mk>

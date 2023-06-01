@@ -1,0 +1,11 @@
+TIMESTAMP = 1636357909
+SHA256 (tdbc1.1.3.tar.gz) = 94627ef7a351cb86071f5ef0079a9198919b607c306fcafd042d42872e66f2ad
+SIZE (tdbc1.1.3.tar.gz) = 186499
+SHA256 (tdbcmysql1.1.3.tar.gz) = ffb1a08d5275d06c0041ce563263cefd2bdb1dfe326b41695a79e52dd1c3b209
+SIZE (tdbcmysql1.1.3.tar.gz) = 181429
+SHA256 (tdbcodbc1.1.3.tar.gz) = 45fbdc5a52f8bedbc92ad3040a6672f85f70801121a5e6da6d939373e9824378
+SIZE (tdbcodbc1.1.3.tar.gz) = 198969
+SHA256 (tdbcpostgres1.1.3.tar.gz) = 2c94359dd0c29dedda5a07f3f508020065e7034b8543ccc9d781293aec7c14c0
+SIZE (tdbcpostgres1.1.3.tar.gz) = 176853
+SHA256 (tdbcsqlite3-1.1.3.tar.gz) = 88336514826a257a95bd8e018b585d60578744a5e331a8ff00a9f0eeb01839fe
+SIZE (tdbcsqlite3-1.1.3.tar.gz) = 141292

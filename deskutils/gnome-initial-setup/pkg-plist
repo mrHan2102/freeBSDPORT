@@ -1,0 +1,5 @@
+libexec/gnome-initial-setup
+libexec/gnome-initial-setup-copy-worker
+share/gnome-session/sessions/gnome-initial-setup.session
+share/gnome-shell/modes/initial-setup.json
+share/polkit-1/rules.d/20-gnome-initial-setup.rules

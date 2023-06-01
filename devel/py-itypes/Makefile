@@ -1,0 +1,16 @@
+PORTNAME=	itypes
+DISTVERSION=	1.1.0
+CATEGORIES=	devel python
+MASTER_SITES=	CHEESESHOP
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+
+MAINTAINER=	kai@FreeBSD.org
+COMMENT=	Simple immutable types for Python
+
+LICENSE=	BSD2CLAUSE
+
+USES=		python:3.6+
+USE_PYTHON=	distutils autoplist
+NO_ARCH=	yes
+
+.include <bsd.port.mk>

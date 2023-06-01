@@ -1,0 +1,15 @@
+PORTNAME=	ruby-termios
+PORTVERSION=	1.1.0
+CATEGORIES=	comms rubygems
+MASTER_SITES=	RG
+
+MAINTAINER=	ruby@FreeBSD.org
+COMMENT=	Ruby interface to termios
+
+LICENSE=	BSD2CLAUSE RUBY
+LICENSE_COMB=	dual
+
+USES=		gem
+USE_RUBY=	yes
+
+.include <bsd.port.mk>

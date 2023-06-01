@@ -1,0 +1,49 @@
+--- CMakeLists.txt.orig	2020-07-12 19:33:44 UTC
++++ CMakeLists.txt
+@@ -202,7 +202,6 @@ elseif(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+   set(WL_DEBUG_FLAGS "-DNDEBUG -DNOPARACHUTE")
+   option(OPTION_ASAN "Build with AddressSanitizer" ON)
+ else()
+-  message(FATAL_ERROR "Unknown CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+ endif()
+ 
+ wl_add_flag(WL_GENERIC_CXX_FLAGS "-std=c++11")
+@@ -219,7 +218,7 @@ endif(OPTION_ASAN)
+ 
+ # This is set to avoid linker errors when using GLVND-libs on Linux
+ if("${OpenGL_GL_PREFERENCE}" STREQUAL "GLVND")
+-   link_libraries("GL")
++   link_libraries(OpenGL::GL)
+    add_compile_definitions(WL_USE_GLVND)
+    message(STATUS "Adding linker flags for GLVND.")
+ endif()
+@@ -352,7 +351,7 @@ endif (OPTION_BUILD_TESTS)
+ 
+ install (
+   FILES ${CMAKE_CURRENT_BINARY_DIR}/VERSION
+-  DESTINATION ${WL_INSTALL_BASEDIR}
++  DESTINATION ${WL_INSTALL_DOCDIR}
+   CONFIGURATIONS Debug;Release
+   COMPONENT CoreVersionFile
+ )
+@@ -401,10 +400,9 @@ install(
+ 
+ install(
+   FILES
+-    COPYING
+     CREDITS
+     ChangeLog
+-  DESTINATION ${WL_INSTALL_BASEDIR}
++  DESTINATION ${WL_INSTALL_DOCDIR}
+   CONFIGURATIONS Debug;Release
+   COMPONENT CoreLicenseFiles
+ )
+@@ -412,7 +410,7 @@ install(
+ install(
+   DIRECTORY
+     doc
+-  DESTINATION ${WL_INSTALL_BASEDIR}
++  DESTINATION ${WL_INSTALL_DOCDIR}
+   CONFIGURATIONS Debug
+   COMPONENT DocFiles
+   PATTERN "CMakeLists.txt" EXCLUDE

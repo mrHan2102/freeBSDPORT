@@ -1,0 +1,38 @@
+[
+{ type: install
+  message: <<EOM
+Configuring Synapse:
+
+The following command can be used to generate a sample configuration of synapse:
+
+%%PYTHON_CMD%% -B -m synapse.app.homeserver -c %%ETCDIR%%/homeserver.yaml --generate-config -H <SERVER_NAME> --report-stats no
+
+Please note that you will still need to manually configure paths to log
+directory, database, and media storage with this method.
+EOM
+}
+{ type: upgrade
+  message: <<EOM
+If you're upgrading from a previous release of synapse, please read the upgrade
+instructions at %%DOCSDIR%%/UPGRADE.rst
+EOM
+}
+{ type: upgrade
+  maximum_version: 1.27.0
+  message: <<EOM
+In synapse 1.27.0, the HTML templates for SSO and email notifications now have Jinja2's autoescape enabled for files ending in .html, .htm, and .xml. If you have customised these templates and see issues when viewing them you might need to update them. Please read the upgrade instructions for further details.
+EOM
+}
+{
+  message: <<EOM
+Running synapse with the sqlite backend is only recommended for testing purposes.
+Future versions of synapse will disable federation by default if sqlite is used.
+EOM
+}
+{ type: upgrade
+  message: <<EOM
+If you're currently using synapse with sqlite and would like to switch to postgres,
+please read the instructions at %%DOCSDIR%%/postgres.md
+EOM
+}
+]

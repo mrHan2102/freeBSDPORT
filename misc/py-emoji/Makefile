@@ -1,0 +1,17 @@
+PORTNAME=	emoji
+PORTVERSION=	1.6.1
+CATEGORIES=	misc python
+MASTER_SITES=	CHEESESHOP
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+
+MAINTAINER=	kevans@FreeBSD.org
+COMMENT=	Emoji support for Python
+
+LICENSE=	BSD3CLAUSE
+LICENSE_FILE=	${WRKSRC}/LICENSE.txt
+
+USES=		python:3.6+
+USE_PYTHON=	autoplist distutils
+NO_ARCH=	yes
+
+.include <bsd.port.mk>

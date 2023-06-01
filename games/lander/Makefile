@@ -1,0 +1,44 @@
+PORTNAME=	lander
+PORTVERSION=	0.6.6
+PORTREVISION=	21
+CATEGORIES=	games
+MASTER_SITES=	https://www.nickg.me.uk/files/ \
+		https://mirror.amdmi3.ru/distfiles/
+
+MAINTAINER=	amdmi3@FreeBSD.org
+COMMENT=	Lunar Lander clone
+
+LICENSE=	GPLv3+
+LICENSE_FILE=	${WRKSRC}/COPYING
+
+BROKEN_FreeBSD_12_powerpc64=	fails to configure on powerpc64 elfv1: could not link against boost_filesystem-boost_filesystem
+
+LIB_DEPENDS=	libfreetype.so:print/freetype2 \
+		libboost_filesystem.so:devel/boost-libs \
+		libpng.so:graphics/png
+
+GNU_CONFIGURE=	yes
+USES=		compiler:c++11-lib gettext gl localbase pkgconfig sdl
+USE_SDL=	sdl image mixer
+USE_GL=		gl glu
+
+CONFIGURE_ARGS=	--with-boost="${LOCALBASE}" \
+		--with-boost-filesystem=boost_filesystem
+
+PORTDOCS=	*
+PORTDATA=	*
+
+DESKTOP_ENTRIES="Lunar Lander" \
+		"Lunar Lander clone" \
+		"${DATADIR}/images/ship.png" \
+		"lander" \
+		"Game;ArcadeGame;" \
+		false
+
+OPTIONS_DEFINE=	DOCS
+
+post-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}/
+
+.include <bsd.port.mk>

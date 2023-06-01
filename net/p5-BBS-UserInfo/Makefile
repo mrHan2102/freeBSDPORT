@@ -1,0 +1,22 @@
+# Created by: Gea-Suan Lin <gslin@gslin.org>
+
+PORTNAME=	BBS-UserInfo
+PORTVERSION=	0.01
+PORTREVISION=	1
+CATEGORIES=	net perl5
+MASTER_SITES=	CPAN
+MASTER_SITE_SUBDIR=	CPAN:GSLIN
+PKGNAMEPREFIX=	p5-
+
+MAINTAINER=	sunpoet@FreeBSD.org
+COMMENT=	Base class of BBS::UserInfo::XXX
+
+LICENSE=	ART10 GPLv1+
+LICENSE_COMB=	dual
+
+USES=		perl5
+USE_PERL5=	configure
+
+NO_ARCH=	yes
+
+.include <bsd.port.mk>

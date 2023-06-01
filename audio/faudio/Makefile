@@ -1,0 +1,36 @@
+PORTNAME=	FAudio
+DISTVERSION=	21.01
+CATEGORIES=	audio
+
+MAINTAINER=	multimedia@FreeBSD.org
+COMMENT=	Accuracy-focused XAudio reimplementation
+
+LICENSE=	ZLIB
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+USES=		cmake compiler:c11 sdl
+USE_GITHUB=	yes
+GH_ACCOUNT=	FNA-XNA
+USE_LDCONFIG=	yes
+USE_SDL=	sdl2
+
+PLIST_SUB=	SOVERSION=${DISTVERSION:S,., ,g:[1..2]:ts.}
+
+OPTIONS_DEFINE=		GSTREAMER
+OPTIONS_DEFAULT=	GSTREAMER
+
+GSTREAMER_DESC=	WMA/XMA support via GStreamer
+
+GSTREAMER_USES=		gettext-runtime gnome pkgconfig
+GSTREAMER_USE=		GNOME=glib20 \
+			GSTREAMER1=yes
+GSTREAMER_CMAKE_BOOL=	GSTREAMER
+
+do-test:
+	@cd ${BUILD_WRKSRC} && \
+		${SETENV} ${CONFIGURE_ENV} ${CMAKE_BIN} ${CMAKE_ARGS} \
+		-DBUILD_TESTS=ON -DBUILD_UTILS=ON ${CMAKE_SOURCE_PATH} && \
+		${DO_MAKE_BUILD} ${ALL_TARGET}
+	@${SETENV} SDL_AUDIODRIVER=dummy ${BUILD_WRKSRC}/faudio_tests
+
+.include <bsd.port.mk>

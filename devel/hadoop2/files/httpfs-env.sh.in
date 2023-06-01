@@ -1,0 +1,2 @@
+export HTTPFS_LOG=/var/log/hadoop
+export HTTPFS_TEMP=/var/tmp

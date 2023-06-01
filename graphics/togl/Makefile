@@ -1,0 +1,54 @@
+# Created by: Randall Hopper <aa8vb@ipass.net>
+
+PORTNAME=	togl
+DISTVERSION=	2.0
+DISTVERSIONSUFFIX=	-src
+PORTREVISION=	2
+CATEGORIES=	graphics tk
+MASTER_SITES=	SF/${PORTNAME}/Togl/${PORTVERSION}
+DISTNAME=	Togl${DISTVERSIONFULL}
+
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Tk OpenGL widget
+
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+USES=		gl gmake tk:tea xorg
+USE_XORG=	x11 xt xmu
+USE_GL=		gl
+USE_LDCONFIG=	${PREFIX}/lib/Togl2.0
+
+WRKSRC=		${WRKDIR}/Togl2.0
+
+TOGL_INSTDIR=	${PREFIX}/lib/${DISTNAME}
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
+PORTDOCS=	*
+PORTEXAMPLES=	*
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|wish |${WISH:T} |' ${WRKSRC}/*.tcl
+	@${REINPLACE_CMD} -e 's/FreeBSD-\*/FreeBSD-*|DragonFly-*/g' \
+		${WRKSRC}/configure
+
+do-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
+
+do-install-EXAMPLES-on:
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/Makefile ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/ben.rgb ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/double.c ${WRKSRC}/double.tcl ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/gears.c ${WRKSRC}/gears.tcl ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/image.c ${WRKSRC}/image.h ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/index.c ${WRKSRC}/index.tcl ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/overlay.c ${WRKSRC}/overlay.tcl ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/stereo.c ${WRKSRC}/stereo.tcl ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/texture.c ${WRKSRC}/texture.tcl ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/togl.c ${WRKSRC}/togl.h ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/tree2.rgba ${STAGEDIR}${EXAMPLESDIR}
+
+.include <bsd.port.mk>

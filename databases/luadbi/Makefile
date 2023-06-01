@@ -1,0 +1,69 @@
+# Created by: Olexander Melnyk <olexander.v.melnyk@gmail.com>
+
+PORTNAME=	luadbi
+PORTVERSION=	0.7.2
+DISTVERSIONPREFIX=	v
+CATEGORIES=	databases
+PKGNAMEPREFIX=	${LUA_PKGNAMEPREFIX}
+
+MAINTAINER=	olexander.v.melnyk@gmail.com
+COMMENT=	Multi-backend SQL database library for Lua
+
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/COPYING
+
+USES=		gmake shebangfix lua:module
+SHEBANG_FILES=	DBI.lua
+USE_GITHUB=	yes
+GH_ACCOUNT=	mwild1
+
+CFLAGS+=	-g -pedantic -Wall -Qunused-arguments -O2 -shared -fPIC -DPIC -std=c99 -I${LOCALBASE}/include
+LDFLAGS+=	-shared
+MAKE_ENV+=	COMMON_CFLAGS=""
+MAKE_ENV+=	COMMON_LDFLAGS=""
+MAKE_ENV+=	INSTALL_PROGRAM="${INSTALL_PROGRAM}"
+MAKE_ENV+=	INSTALL_DATA="${INSTALL_DATA}"
+MAKE_ENV+=	LUA_V="${LUA_VER}"
+MAKE_ENV+=	LUA_LDIR="${LUA_MODSHAREDIR}"
+MAKE_ENV+=	LUA_CDIR="${LUA_MODLIBDIR}"
+MAKE_ENV+=	LUA_INC="-I${LUA_INCDIR}"
+
+MAKE_JOBS_UNSAFE=yes
+
+OPTIONS_MULTI=	DATABASE
+OPTIONS_MULTI_DATABASE=	MYSQL SQLITE3 PGSQL
+OPTIONS_DEFAULT=	MYSQL
+
+PLIST_FILES=	%%LUA_MODSHAREDIR%%/DBI.lua
+
+MYSQL_USES=		mysql
+MYSQL_ALL_TARGET=	mysql
+MYSQL_PLIST_FILES=	%%LUA_MODLIBDIR%%/dbd/mysql.so
+MYSQL_MAKE_ENV+=	MYSQL_LDFLAGS="-L${LOCALBASE}/lib/mysql -lmysqlclient"
+MYSQL_MAKE_ENV+=	MYSQL_INC="-I${LOCALBASE}/include/mysql"
+
+SQLITE3_USES=		localbase:ldflags sqlite:3
+SQLITE3_ALL_TARGET=	sqlite3
+SQLITE3_PLIST_FILES=	%%LUA_MODLIBDIR%%/dbd/sqlite3.so
+SQLITE3_MAKE_ENV+=	SQLITE3_INC=""
+
+PGSQL_USES=		pgsql
+PGSQL_ALL_TARGET=	psql
+PGSQL_PLIST_FILES=	%%LUA_MODLIBDIR%%/dbd/postgresql.so
+PGSQL_MAKE_ENV+=	PSQL_INC="-I${LOCALBASE}/include/postgresql/server"
+
+do-install:
+	@${MKDIR} ${STAGEDIR}${LUA_MODLIBDIR}/dbd
+	@${MKDIR} ${STAGEDIR}${LUA_MODSHAREDIR}
+	${CP} ${WRKSRC}/DBI.lua ${STAGEDIR}${LUA_MODSHAREDIR}
+
+do-install-MYSQL-on:
+	${INSTALL_PROGRAM} ${WRKSRC}/dbd/mysql.so ${STAGEDIR}${LUA_MODLIBDIR}/dbd
+
+do-install-SQLITE3-on:
+	${INSTALL_PROGRAM} ${WRKSRC}/dbd/sqlite3.so ${STAGEDIR}${LUA_MODLIBDIR}/dbd
+
+do-install-PGSQL-on:
+	${INSTALL_PROGRAM} ${WRKSRC}/dbd/postgresql.so ${STAGEDIR}${LUA_MODLIBDIR}/dbd
+
+.include <bsd.port.mk>

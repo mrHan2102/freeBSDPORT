@@ -1,0 +1,24 @@
+# Created by: Piotr Kubaj <pkubaj@anongoth.pl>
+
+PORTNAME=	libsndfile
+PORTVERSION=	1.0.25
+DISTVERSIONSUFFIX=	-12.el7
+PORTREVISION=	6
+CATEGORIES=	audio linux
+
+MAINTAINER=	emulation@FreeBSD.org
+COMMENT=	Reading and writing files containing sampled sound (like WAV or AIFF) (Linux CentOS ${LINUX_DIST_VER})
+
+USES=		cpe linux:c7
+USE_LDCONFIG=	yes
+USE_LINUX=	flac gsm libogg libvorbis
+USE_LINUX_RPM=	yes
+
+CPE_VENDOR=	libsndfile_project
+
+CONFLICTS=	linux-c6-${PORTNAME}
+DESCR=		${.CURDIR}/../${PORTNAME}/pkg-descr
+
+OPTIONS_DEFINE=	DOCS
+
+.include <bsd.port.mk>

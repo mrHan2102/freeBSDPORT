@@ -1,0 +1,24 @@
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
+
+PORTNAME=	Protocol-XMLRPC
+PORTVERSION=	0.10
+PORTREVISION=	1
+CATEGORIES=	www perl5
+MASTER_SITES=	CPAN
+MASTER_SITE_SUBDIR=	CPAN:VTI
+PKGNAMEPREFIX=	p5-
+
+MAINTAINER=	sunpoet@FreeBSD.org
+COMMENT=	XML-RPC implementation
+
+LICENSE=	ART20
+
+BUILD_DEPENDS=	${RUN_DEPENDS}
+RUN_DEPENDS=	p5-XML-LibXML>=0:textproc/p5-XML-LibXML
+
+USES=		perl5
+USE_PERL5=	configure
+
+NO_ARCH=	yes
+
+.include <bsd.port.mk>

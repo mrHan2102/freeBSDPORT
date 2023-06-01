@@ -1,0 +1,15 @@
+[
+{ type: install
+  message: <<EOM
+RetroArch supports multiple backends for input devices like gamepads:
+
+- evdev/udev: usable with the kernel driver from sysutils/iichid
+  or a userspace driver from e.g. multimedia/webcamd
+  (you have to grant access permissions on the appropriate
+   /dev/input/eventN device to your user account)
+- SDL2, which uses userspace raw USB HID access
+  (you have to grant access permissions on the appropriate
+   /dev/uhidN device to your user account)
+EOM
+}
+]

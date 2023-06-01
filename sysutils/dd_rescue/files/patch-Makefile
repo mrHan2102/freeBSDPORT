@@ -1,0 +1,63 @@
+--- Makefile.orig	2021-04-29 08:31:32 UTC
++++ Makefile
+@@ -7,11 +7,7 @@ VERSION = 1.99.11
+ DESTDIR = 
+ SRCDIR = .
+ 
+-CC = gcc
+-SHELL = /bin/bash
+-RPM_OPT_FLAGS ?= -Os -Wall -g -D_FORTIFY_SOURCE=2
+-CFLAGS = $(RPM_OPT_FLAGS) $(EXTRA_CFLAGS) -DHAVE_CONFIG_H -I .
+-CFLAGS_OPT = $(CFLAGS) -O3
++CFLAGS_OPT = $(CFLAGS) -DHAVE_CONFIG_H
+ INSTALL ?= install
+ INSTALLFLAGS = -s
+ prefix = $(DESTDIR)/usr
+@@ -36,7 +32,7 @@ LIB = lib
+ LIBDIR = /usr/$(LIB)
+ COMPILER = $(shell $(CC) --version | head -n1)
+ ID = $(shell git describe --tags || cat REL-ID)
+-DEFINES = -DVERSION=\"$(VERSION)\"  -D__COMPILER__="\"$(COMPILER)\"" -DID=\"$(ID)\" # -DPLUGSEARCH="\"$(LIBDIR)\""
++DEFINES = -DVERSION=\"$(VERSION)\"  -D__COMPILER__="\"$(COMPILER)\"" -DID=\"$(ID)\" -DHAVE_CONFIG_H # -DPLUGSEARCH="\"$(LIBDIR)\""
+ OUT = -o dd_rescue
+ PIC = -fPIC
+ PIE = -fPIE
+@@ -71,19 +67,13 @@ else
+   HAVE_XATTR=0
+ endif
+ 
+-ifeq ($(CC),wcl386)
+-  CFLAGS = "-ox -wx $(EXTRA_CFLAGS)"
+-  DEFINES = -dMISS_STRSIGNAL -dMISS_PREAD -dVERSION=\"$(VERSION)\" -d__COMPILER__="\"$(COMPILER)\""
+-  OUT = ""
+-endif
+-
+ MACH := $(shell uname -m | tr A-Z a-z | sed 's/i[3456]86/i386/')
+ 
+ ISX86 := 0
+ ifeq ($(MACH),i386)
+   ISX86 := 1
+ endif
+-ifeq ($(MACH),x86_64)
++ifeq ($(MACH),amd64)
+   ISX86 := 1
+   LIB = lib64
+ endif
+@@ -289,7 +279,7 @@ libddr_MD5.so: libddr_hash.so
+ 	ln -sf $< $@
+ 
+ libddr_lzo.so: libddr_lzo.po
+-	$(CC) -shared -o $@ $^ -llzo2
++	$(CC) -shared -o $@ $^ $(EXTRA_LDFLAGS) -llzo2
+ 
+ libddr_null.so: libddr_null.po
+ 	$(CC) -shared -o $@ $^
+@@ -360,7 +350,7 @@ libfalloc-static: $(SRCDIR)/dd_rescue.c $(DDR_HEADERS)
+ 
+ # This is the default built
+ dd_rescue: $(SRCDIR)/dd_rescue.c $(DDR_HEADERS) $(OBJECTS) $(OBJECTS2)
+-	$(CC) $(CFLAGS) $(PIE) $(LDPIE) $(DEFINES) $< $(OUT) $(OBJECTS) $(OBJECTS2) -ldl $(EXTRA_LDFLAGS) $(RDYNAMIC)
++	$(CC) $(CFLAGS) $(PIE) $(LDPIE) $(DEFINES) $< $(OUT) $(OBJECTS) $(OBJECTS2) $(EXTRA_LDFLAGS) $(RDYNAMIC)
+ 
+ # Test programs 
+ md5: $(SRCDIR)/md5.c $(SRCDIR)/md5.h $(SRCDIR)/hash.h config.h

@@ -1,0 +1,10 @@
+--- configure.ac.orig	2021-09-28 08:39:16 UTC
++++ configure.ac
+@@ -45,6 +45,7 @@ AM_CONDITIONAL([STATIC_BINARY_ENABLE], test "$STATIC_B
+ 
+ 
+ # Checks for libraries.
++AC_SEARCH_LIBS(inotify_init, inotify)
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([sys/inotify.h sys/fanotify.h mcheck.h])

@@ -1,0 +1,17 @@
+PORTNAME=	semantic_puppet
+PORTVERSION=	1.0.4
+CATEGORIES=	devel rubygems
+MASTER_SITES=	RG
+
+MAINTAINER=	ruby@FreeBSD.org
+COMMENT=	Library for working with Semantic Versions and module dependencies
+
+LICENSE=	APACHE20
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+USES=		gem
+USE_RUBY=	yes
+
+NO_ARCH=	yes
+
+.include <bsd.port.mk>
